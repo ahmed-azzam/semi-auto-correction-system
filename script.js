@@ -1,9 +1,9 @@
 /**/
 //var data=["hacking", "love", "hate", "mea"];
-var data = ["am","you","us","ali","ibrahimt"]
+var data = ["ali","am","we","us","you","ahmed","heat","hate","love" ,"ibrahim","meaning"]
 
 function each(array, func) {
-	 for (var i=0; i<array.length;i++ ){
+	 for (var i=0; i<array.length; i++){
 	 	func(array[i]);
 	 }
 	}
@@ -26,22 +26,46 @@ each(array, function(element, i) {
 return acc;
 }
 
-/*
-//take the array of chr  from user and compare it with array chr of the mai1.
-
-function isItChr (arr1,arr2){
-	
-	x.sort();
-	y.sort();
-	for ( var i = 0; i< x.length;i++){
-		if (x[i]!==y[i]){
-			return false
+function n (a1,a2,f){
+	for (var i = 0; i<a2.length; i++){
+		if(a1.join()===a2[i].join()){
+			return f(i);
 		}
-	}
-	return  true;
-}
 
-*/
+	}
+	return f(-1)
+}
+// loop0 a1=["a", "m"],a2=[["a", "m"], ["s", "u"]]
+//loop1 a1=["a", "d", "s"],a2 = [["o", "u", "y"], ["a", "i", "l"]]
+
+function s (mini, maxi){
+	var indexes=[]
+	var ar=[];
+	for (var i = 0; i<mini.length; i++){
+		var arr3Main = filter(maxi, function(arr){
+			return arr.length === mini[i].length;
+		});
+		console.log (arr3Main);
+		ar.push(arr3Main.length);
+		n (mini[i],arr3Main, function (i){
+			indexes.push(i)
+		})
+		
+	}
+	console.log(ar)
+	for(var i = 1; i<indexes.length; i++){
+		for (var j = 0; j<i; j++){
+        	if(indexes[i]!==-1){
+        		indexes[i]+=ar[j]
+        	}
+    	}
+    }
+	return indexes;
+}
+//loop 0 
+//var arr3Main=[["a", "m"], ["s", "u"]].
+//loop 1
+//var arr3Main = [["o", "u", "y"], ["a", "i", "l"]]
 
 // take the words length of array from user and compare it with words of the data.
 function arrLength (min,max){
@@ -55,6 +79,7 @@ function arrLength (min,max){
 		}
 	return acc;
 }
+
 
 //take array of arrays and return array Alphabetically arranged.
 //why to use is: to check the chrs faster.
@@ -88,52 +113,56 @@ run.click (function(){
 
 
 
-//batick
+//watermelon
 
 var arr2Main = map(arr1Main, function(str){
-	//console.log(str.split(""))
-	var os = str.split("")
-	console.log(os)
-		return os;
-
-	});
 	
-
-	console.log(arr2Main); //[["a", "m"], ["u", "s"], ["y", "o", "u"], ["a", "l", "i"]]
-	/*
+	var os = str.split("")
+		return os;
+	});
+	//console.log(arr2Main); //[["a", "m"], ["u", "s"], ["y", "o", "u"], ["a", "l", "i"]]
+	
 	var arr2s = map(arr1s, function(str){
 		return str.split("");
 	});
 	//console.log(arr2s);	//[["a", "m"],["o", "u", "y"]]			//arr2s = [[L,o,v,e],[H,a,k,i,n,g]]
 
-	var arr2sx = alfa(arr2s);
-	var arr2Mainx = alfa(arr2Main);
-	//console.log(arr2sx)			//
-*/	
+	var z = map(arr1Main, function(str){
+	
+	var os = str.split("")
+		return os;
+	});
+	var m = map(arr1s, function(str){
+		return str.split("");
+	});
+
+	var arr2Mainx = alfa(z);
+	var arr2sx = alfa(m);
+	//console.log(arr2Mainx) //array alfa //[["a", "m"], ["s", "u"], ["o", "u", "y"], ["a", "i", "l"]]
+	//console.log(arr2sx)		//[["a", "s"], ["a", "d", "s"]]
+
+
+
+var x = s (arr2sx,arr2Mainx)
+ console.log (x) //return array of indext of arr2Main //su lia ==> [1, 3]; 
+	var result = ""
+for (var i = 0; i < x.length; i++){
+	result+=arr2Main[x[i]].join("")+" ";
+	//console.log(arr2Main[x[i]])
+}
+$("#result").html(result)
 
 });
 
 
 
-/*
+/*		  arr2Main 			     [["a", "m"], ["u", "s"], ["y", "o", "u"], ["a", "l", "i"]]
 arr2sx vs arr2Mainx
-
-[["u","o","y"],["o","v","e","L"]] vs [["y","o","u"],["L","o","v","e"],["m","e","w"]]
-
  
-//arrLength (["ma","yuo"],["am","you","us","ali","ibrahimt"])
-//["am", "us", "you", "ali"] arr2Main
- 
-
-function s (min,max){
-	for ( var i = 0; i< x.length;i++){
-		for (var j = 0; j< x.length;j++){
-			if (min[i]!==y[i]){
-			return false
-		}
-		
-	}
-}
-	return  true;
-}
+[["a", "m"], ["a", "d", "s"]] vs [["a", "m"], ["s", "u"], ["o", "u", "y"], ["a", "i", "l"]]
 */
+
+
+
+
+

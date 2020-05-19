@@ -1,4 +1,7 @@
 /**/
+var data=["hacking", "love", "hate", "mea"];
+
+
 function each(array, func) {
 	for (var i=0; i<array.length;i++ ){
 	 	func(array[i]);
@@ -37,29 +40,43 @@ function s (arr1,arr2){
 
 */
 
-var data=[hacking, love];
+function arrLength (min,max){
+		var acc = [];
+		for (var i = 0; i < min.length; i++) {
+			for(var j = 0; j < max.length; j++){
+				if(max[j].length===min[i].length){
+					acc.push(max[j]) 
+				}
+			}
+		}
+	return acc;
+}
+
+
 
 var run = $("#check");
 //I Love Hacking
 run.click (function(){
 
 	var mainText = $("#tx").val();		//mainText = I Love Hacking
-	var arr1Main = mainText.split(" "); 	//arr1Main = ["I","Love","Hacking"]
+	var arr0s = mainText.split(" "); 	//arr0s = ["I","Love","Hacking"]
 	//console.log(mainText)
-	//using filter
-	 var arr1s = filter(arr1Main,function(str){
-  		return str.length>1 ;
-	  	});								//arr1s = ["Love","Haking"]
-	//console.log(arr1s);
 	
-/*
-	var arr2Main = filter(data,function(str){
-  		return  ;
-	  	});								
-*/
+	 var arr1s = filter(arr0s,function(str){
+  		return str.length>1 ;
+	  	});								//arr1s = ["Love","Hacking"]
+	//console.log(arr1s);
 
+	
+	var arr1Main = arrLength(arr1s,data)
+	
+	//console.log(arr1Main);			//arr1Main = ["Love","Hacking"]
 
-	//usning map
+var arr2Main = map(arr1Main, function(str){
+		return str.split("");
+	});
+	//console.log(arr2Main);
+	
 	var arr2s = map(arr1s, function(str){
 		return str.split("");
 	});
@@ -67,14 +84,18 @@ run.click (function(){
 
 	
 
-} ) 
+});
+
+
 
 /*
-[[L,o,v,e],[H,a,k,i,n,g]]
+arr2s vs arr2Main
 
-var x = ["L","o","v","e"];
+[["u","o","y"],["o","v","e","L"]] vs [["y","o","u"],["L","o","v","e"],["m","e","w"]]
 
-var y =  ["o","v","e","L"];
+ 
+
+ 
 
 function s (x,y){
 	

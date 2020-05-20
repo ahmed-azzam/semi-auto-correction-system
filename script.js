@@ -1,6 +1,8 @@
 /**/
 //var data=["hacking", "love", "hate", "mea"];
-var data = ["ali","am","we","us","you","ahmed","heat","hate","love" ,"ibrahim","meaning"]
+var data = [];
+
+data.push("ali","am","us","you","ahmed","hate","love" ,"ibrahim","meaning")
 
 function each(array, func) {
 	 for (var i=0; i<array.length; i++){
@@ -106,19 +108,20 @@ var run = $("#check");
 //I Love Hacking
 run.click (function(){
 
-	var mainText = $("#tx").val();		//mainText = I Love Hacking
-	var arr0s = mainText.split(" "); 	//arr0s = ["I","Love","Hacking"]
-	//console.log(arr0s) //["ma", "yuo"]
+	var mainText = $("#tx").val();	//ahmed green we	
+	var arr0s = mainText.split(" "); 	
+	//console.log(arr0s) //["ahmed", "green", "we"]
 	
 	 var arr1s = filter(arr0s,function(str){
   		return str.length>1 ;
-	  	});								//arr1s = ["Love","Hacking"]
-	//console.log(arr1s); //["ma", "yuo"]
+	  	});	
+	//console.log(arr1s); //["ahmed", "we", "green"]
 
 	
 	var arr1Main = arrLength(arr1s,data)
+
 	
-	//console.log(arr1Main); //["am", "us", "you", "ali"]			//arr1Main = ["Love","Hacking"]
+	console.log(arr1Main); //
 
 
 
@@ -158,8 +161,19 @@ var x = s (arr2sx,arr2Mainx)
 //console.log (x) //return array of indext of arr2Main //su lia ==> [1, 3]; 
 	var result = ""
 for (var i = 0; i < x.length; i++){
-	result+=arr2Main[x[i]].join("")+" ";
-	//console.log(arr2s[x[i]])
+	if (x[i]===-1){
+		var r = confirm("Did you want to add the woerd: "+arr1s[i] +"?");
+		if(r){
+			data.push(arr1s[i]);
+			//console.log(data)
+		}
+		//console.log(arr1s)
+	}else{
+		//console.log(arr2Main[x[i]])
+		result+=arr2Main[x[i]].join("")+" ";
+		//console.log(result)
+	}
+	
 }
 $("#result").html(result)
 

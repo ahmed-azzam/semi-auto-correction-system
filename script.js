@@ -45,23 +45,27 @@ function s (mini, maxi){
 		var arr3Main = filter(maxi, function(arr){
 			return arr.length === mini[i].length;
 		});
-		console.log (arr3Main);
+		//console.log (arr3Main);
 		ar.push(arr3Main.length);
 		n (mini[i],arr3Main, function (i){
 			indexes.push(i)
 		})
 		
 	}
-	console.log(ar)
+	//console.log(ar)
 	for(var i = 1; i<indexes.length; i++){
 		for (var j = 0; j<i; j++){
         	if(indexes[i]!==-1){
         		indexes[i]+=ar[j]
         	}
+        		//console.log(arr2s[x[i]])
+        		//confirm("Did you want to add "++ "?")
+        	
     	}
     }
 	return indexes;
 }
+
 //loop 0 
 //var arr3Main=[["a", "m"], ["s", "u"]].
 //loop 1
@@ -87,8 +91,15 @@ function alfa (arr){
 	for (var i = 0; i< arr.length;i++){
 		arr[i].sort();
 	}
-	return arr
+	return arr;
 }
+
+$("#clear").click(function(){
+	//console.log($("#result"));
+	$("#tx")[0].value="";
+	$("#result")[0].textContent="";
+});
+
 
 
 var run = $("#check");
@@ -144,11 +155,11 @@ var arr2Main = map(arr1Main, function(str){
 
 
 var x = s (arr2sx,arr2Mainx)
- console.log (x) //return array of indext of arr2Main //su lia ==> [1, 3]; 
+//console.log (x) //return array of indext of arr2Main //su lia ==> [1, 3]; 
 	var result = ""
 for (var i = 0; i < x.length; i++){
 	result+=arr2Main[x[i]].join("")+" ";
-	//console.log(arr2Main[x[i]])
+	//console.log(arr2s[x[i]])
 }
 $("#result").html(result)
 
